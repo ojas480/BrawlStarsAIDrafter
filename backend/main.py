@@ -208,4 +208,8 @@ def post_evaluate(req: EvaluateRequest):
 # ---------------------------- Static frontend ----------------------------
 
 if FRONTEND_DIR.exists():
-    app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
+    app.mount("/frontend", StaticFiles(directory=FRONTEND_DIR), name="frontend")
+
+    @app.get("/")
+    def index():
+        return FileResponse(FRONTEND_DIR / "index.html")
