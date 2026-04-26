@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brawl Drafting AI</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Brawl Drafting AI</h1>
+    <p class="sub">Pick the map, fill in what's locked, get a recommendation or rate your pick.</p>
+  </header>
+
+  <main>
+    <section class="map-row">
+      <label>Mode
+        <select id="mode-select"></select>
+      </label>
+      <label>Map
+        <input type="text" id="map-search" placeholder="Type to filter..." autocomplete="off" />
+        <select id="map-select" size="1"></select>
+      </label>
+      <img id="map-image" alt="" />
+    </section>
+
+    <section class="teams">
+      <div class="team team-you">
+        <h2>Your Team</h2>
+        <div class="slots" id="slots-you"></div>
+      </div>
+      <div class="team team-enemy">
+        <h2>Enemy Team</h2>
+        <div class="slots" id="slots-enemy"></div>
+      </div>
+    </section>
+
+    <section class="actions">
+      <button id="btn-recommend" class="primary">Recommend best for my slot</button>
+      <button id="btn-evaluate">Evaluate my pick</button>
+      <button id="btn-clear">Clear all</button>
+      <label class="filter-toggle">
+        <input type="checkbox" id="filter-owned" />
+        Only recommend brawlers I own
+      </label>
+      <button id="btn-collection" class="ghost">My brawlers (<span id="owned-count">0</span>)</button>
+      <span id="status" class="status"></span>
+    </section>
+
+    <section id="results" class="results"></section>
+  </main>
+
+  <div id="picker" class="picker hidden">
+    <div class="picker-inner">
+      <div class="picker-header">
+        <h3 id="picker-title">Pick a brawler</h3>
+        <input type="text" id="picker-search" placeholder="Search brawlers..." />
+        <button id="picker-close">×</button>
+      </div>
+      <div id="picker-grid" class="picker-grid"></div>
+    </div>
+  </div>
+
+  <div id="collection" class="picker hidden">
+    <div class="picker-inner">
+      <div class="picker-header">
+        <h3>My brawlers — click to toggle ownership</h3>
+        <input type="text" id="collection-search" placeholder="Search..." />
+        <button id="collection-all">All</button>
+        <button id="collection-none">None</button>
+        <button id="collection-close">×</button>
+      </div>
+      <div id="collection-grid" class="picker-grid"></div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
